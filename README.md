@@ -1,3 +1,13 @@
+# TLDR
+```
+docker build -t criu-cuda-checkpoint .
+docker run -d --gpus all --cap-add all --privileged  -v /lib/modules:/lib/modules --tmpfs /run criu-cuda-checkpoint
+
+mkdir -p demo
+criu dump --shell-job --images-dir demo --tree $PID
+criu restore --shell-job --restore-detached --images-dir demo
+```
+
 # The cuda-checkpoint Utility
 
 Checkpoint and restore functionality for CUDA is exposed through a command-line utiity called `cuda-checkpoint`
